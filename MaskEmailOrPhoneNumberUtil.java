@@ -9,8 +9,19 @@ public static final char MASK_CHAR = '*';
         // Please enter valid email or phone number in below string as demo purpose
         // If we datas come from database than we can make call and have the database connetion here 
         // Where Str will be removed and replaced. So which will read the input. 
+        
         String str = "bhavan.bpt@gmail.com";
 
+
+        String result = getResult(str);
+
+        System.out.println("Result of inputed String is :-" + result);
+
+    }
+
+    public static String getResult(String str)  {
+
+        String outputString = null;
         if(isValidEmailOrPhoneNumber(str)) {
 
             boolean isValidEmail = false;
@@ -27,12 +38,16 @@ public static final char MASK_CHAR = '*';
 
                     System.out.println("Mask Email Address:- " + maskedEmailAddress);
 
+                    return maskedEmailAddress;
+
                 } else if(isValidPhoneNumber) {
 
                     // mask first 4 characters
                     String phoneNumber = maskString(str, 3, 6, MASK_CHAR);
 
                     System.out.println("Mask Phone Number:-" + phoneNumber);
+
+                    return phoneNumber;
                 }
 
             } else {
@@ -43,9 +58,11 @@ public static final char MASK_CHAR = '*';
             System.out.println("Email Or Phone number is blank..");
         }
 
+        return outputString;
+
     }
 
-    private static String maskEmailAddress(String emailString, char maskChar) throws Exception {
+    public static String maskEmailAddress(String emailString, char maskChar)  {
 
         String[] emailParts = emailString.split("@");
 
@@ -58,13 +75,11 @@ public static final char MASK_CHAR = '*';
         return firstPartWithMasking + "@" + emailParts[1];
     }
 
-    private static String maskString(String strText, int start, int end, char maskChar) throws Exception {
+    public static String maskString(String strText, int start, int end, char maskChar)  {
 
         if(start < 0) start = 0;
 
         if(end > strText.length()) end = strText.length();
-
-        if(start > end) throw new Exception("End index cannot be greater than start index");
 
         int maskLength = end - start;
 
@@ -79,7 +94,7 @@ public static final char MASK_CHAR = '*';
         return strText.substring(0, start) + sbMaskString.toString() + strText.substring(start + maskLength);
     }
 
-    private static boolean isValidEmailOrPhoneNumber(String emailOrPhoneNumberStr) {
+    public static boolean isValidEmailOrPhoneNumber(String emailOrPhoneNumberStr) {
         if(emailOrPhoneNumberStr == null || emailOrPhoneNumberStr.trim().equals("")) {
             return false;
         }
@@ -92,14 +107,14 @@ public static final char MASK_CHAR = '*';
      * @param emailOrPhoneNumberStr
      * @return
      */
-    private static boolean isValidPhoneNumber(String emailOrPhoneNumberStr) {
+    public static boolean isValidPhoneNumber(String emailOrPhoneNumberStr) {
         if(emailOrPhoneNumberStr.matches("[0-9]+") && emailOrPhoneNumberStr.length() == 10) {
             return true;
         }
-        return true;
+        return false;
     }
 
-    private static boolean isValidEmailAddress(String emailOrPhoneNumberStr) {
+    public static boolean isValidEmailAddress(String emailOrPhoneNumberStr) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
 
         Pattern pat = Pattern.compile(emailRegex);
