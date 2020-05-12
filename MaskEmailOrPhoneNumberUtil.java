@@ -7,7 +7,7 @@ public static final char MASK_CHAR = '*';
     public static void main(String[] args) throws Exception {
 
         // Please enter valid email or phone number in below string
-        String str = "mahendra.goti89@gmail.com";
+        String str = "bhavan.bpt@gmail.com";
 
         if(isValidEmailOrPhoneNumber(str)) {
 
