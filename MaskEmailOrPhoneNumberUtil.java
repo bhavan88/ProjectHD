@@ -1,3 +1,5 @@
+package com.Mask;
+
 import java.util.regex.Pattern;
 
 public class MaskEmailOrPhoneNumberUtil {
