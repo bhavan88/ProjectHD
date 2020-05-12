@@ -6,7 +6,9 @@ public static final char MASK_CHAR = '*';
 
     public static void main(String[] args) throws Exception {
 
-        // Please enter valid email or phone number in below string 
+        // Please enter valid email or phone number in below string as demo purpose
+        // If we datas come from database than we can make call and have the database connetion here 
+        // Where Str will be removed and replaced. So which will read the input. 
         String str = "bhavan.bpt@gmail.com";
 
         if(isValidEmailOrPhoneNumber(str)) {
